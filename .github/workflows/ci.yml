@@ -1,0 +1,25 @@
+name: action-mustache
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  ci:
+    name: ci tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+    
+    - name: Setup Node
+      uses: actions/setup-node@v3
+
+    - name: NPM Install
+      run: npm run setup
+
+    - name: Run Jest Tests
+      run: npm test

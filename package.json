@@ -1,0 +1,26 @@
+{
+  "name": "action-jira",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "setup": "npm install --userconfig ./.npmrc",
+    "test": "jest --clearCache && jest --no-cache --runInBand"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clydetealium/action-jira.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clydetealium/action-jira/issues"
+  },
+  "homepage": "https://github.com/clydetealium/action-jira#readme",
+  "dependencies": {
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

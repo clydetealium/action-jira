@@ -1,0 +1,27 @@
+name: 'Jira issue query'
+description: 'Queries a given jira issue id'
+inputs:
+  user:
+    description: 'The user credential'
+    required: true
+  token:
+    description: 'The user token'
+    required: true
+  base-url:
+    description: 'The base url of the jira instance'
+    required: true
+  issue-key:
+    description: 'The issue key to query'
+    required: true
+  named-query:
+    description: 'A canned query to run'
+    required: false
+  open-query:
+    description: 'A comma delimited list of fields to query'
+    required: false
+outputs:
+  payload:
+    description: 'JSON output of requested jira issue fields'
+runs:
+  using: 'node14'
+  main: 'main.js'
