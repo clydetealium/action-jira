@@ -6,8 +6,8 @@ async function main() {
   try {
     const user = core.getInput('user');
     const token = core.getInput('token');
-    const jiraIssue = core.getInput('issue-key');
-    const baseURL = core.getInput('issue-key');
+    const jiraIssues = core.getInput('issue-keys');
+    const baseURL = core.getInput('base-url');
     const namedQuery = core.getInput('named-query');
     const openQuery = core.getInput('open-query');
 
@@ -16,7 +16,7 @@ async function main() {
       new QueryFactory().get(namedQuery);
     
     const client = new JiraApiClient(baseURL, user, token);
-    const payload = await client.getIssue(jiraIssue, query);
+    const payload = await client.getIssues(jiraIssues, query);
 
     core.setOutput('payload', payload);
   } catch (error) {

@@ -8,13 +8,17 @@ class JiraApiClient {
     });
   }
 
-  async getIssue(issueKey, fields = '*all') {
-    try {
-      const response = await this.axiosInstance.get(`/rest/api/3/issue/${issueKey}?fields=${fields}`);
-      return response.data;
-    } catch (error) {
-      throw new Error(`Failed to fetch Jira issue ${issueKey}: ${error.message}`);
+  async getIssues(issueKeys, fields = '*all') {
+    let responses = [];
+    for (const issueKey of issueKeys) {
+      try {
+        const response = await this.axiosInstance.get(`/rest/api/3/issue/${issueKey}?fields=${fields}`);
+        responses.push(response.data);
+      } catch (error) {
+        throw new Error(`Failed to fetch Jira issue ${issueKey}: ${error.message}`);
+      }
     }
+      return responses;
   }
 }
 
