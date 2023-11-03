@@ -14,17 +14,17 @@ describe('JiraApiClient', () => {
     });
   });
 
-  it('should fetch a Jira issue', async () => {
+  it('should fetch a Jira issues', async () => {
     const issueKey = 'ISSUE-123';
     const mockIssueData = { key: issueKey, summary: 'Test Issue' };
 
     const jira = new JiraApiClient(baseURL, username, password);
     jira.axiosInstance.get.mockResolvedValue({ data: mockIssueData });
 
-    const issue = await jira.getIssue(issueKey);
+    const issue = await jira.getIssues([issueKey]);
 
     expect(jira.axiosInstance.get).toHaveBeenCalledWith(`/rest/api/3/issue/${issueKey}?fields=*all`);
-    expect(issue).toEqual(mockIssueData);
+    expect(issue).toEqual([mockIssueData]);
   });
 
   it('should handle API request error', async () => {
@@ -34,6 +34,6 @@ describe('JiraApiClient', () => {
     const jira = new JiraApiClient(baseURL, username, password);
     jira.axiosInstance.get.mockRejectedValue(new Error(errorMessage));
 
-    await expect(jira.getIssue(issueKey)).rejects.toThrow(`Failed to fetch Jira issue ${issueKey}: ${errorMessage}`);
+    await expect(jira.getIssues([issueKey])).rejects.toThrow(`Failed to fetch Jira issue ${issueKey}: ${errorMessage}`);
   });
 });
