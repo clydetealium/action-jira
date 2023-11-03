@@ -10,8 +10,8 @@ inputs:
   base-url:
     description: 'The base url of the jira instance'
     required: true
-  issue-key:
-    description: 'The issue key to query'
+  issue-keys:
+    description: 'The issue keys to query'
     required: true
   named-query:
     description: 'A canned query to run'
