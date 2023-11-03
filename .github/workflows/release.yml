@@ -1,4 +1,4 @@
-name: gha-action
+name: release
 on:
   push:
     branches:
