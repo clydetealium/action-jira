@@ -24,4 +24,4 @@ outputs:
     description: 'JSON output of requested jira issue fields'
 runs:
   using: 'node16'
-  main: 'main.js'
+  main: 'dist/index.js'
