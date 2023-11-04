@@ -29168,7 +29168,8 @@ class JiraApiClient {
 
   async getIssues(issueKeys, fields = '*all') {
     let responses = [];
-    for (const issueKey of issueKeys) {
+    const issues = [...new Set(issueKeys)]
+    for (const issueKey of issues) {
       try {
         const response = await this.axiosInstance.get(`/rest/api/3/issue/${issueKey}?fields=${fields}`);
         responses.push(response.data);
