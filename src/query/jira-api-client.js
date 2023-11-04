@@ -16,7 +16,7 @@ class JiraApiClient {
         const response = await this.axiosInstance.get(`/rest/api/3/issue/${issueKey}?fields=${fields}`);
         responses.push(response.data);
       } catch (error) {
-        throw new Error(`Failed to fetch Jira issue ${issueKey}: ${error.message}`);
+        console.log(`Failed to fetch Jira issue ${issueKey}: ${error.message}`);
       }
     }
       return JSON.stringify({issues: responses});
