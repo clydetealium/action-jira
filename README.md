@@ -98,6 +98,11 @@ You'll need to install ncc globally to run this command:
 ```
 npm install -g @vercel/ncc
 ```
+or run
+```
+npm run build
+```
+
 Read more about this from the [GitHub Actions docs](https://docs.github.com/en/actions/creating-actions/creating-a-javascript-action#commit-tag-and-push-your-action-to-github)
 
 ## Conventional commit

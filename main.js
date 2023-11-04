@@ -6,7 +6,7 @@ async function main() {
   try {
     const user = core.getInput('user');
     const token = core.getInput('token');
-    const jiraIssues = core.getInput('issue-keys');
+    const jiraIssues = core.getInput('issue-keys').split(',');
     const baseURL = core.getInput('base-url');
     const namedQuery = core.getInput('named-query');
     const openQuery = core.getInput('open-query');
