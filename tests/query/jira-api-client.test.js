@@ -24,7 +24,7 @@ describe('JiraApiClient', () => {
     const issue = await jira.getIssues([issueKey]);
 
     expect(jira.axiosInstance.get).toHaveBeenCalledWith(`/rest/api/3/issue/${issueKey}?fields=*all`);
-    expect(issue).toEqual([mockIssueData]);
+    expect(issue).toEqual(JSON.stringify({issues: [mockIssueData]}));
   });
 
   it('should handle API request error', async () => {
