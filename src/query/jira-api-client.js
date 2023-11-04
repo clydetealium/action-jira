@@ -18,7 +18,7 @@ class JiraApiClient {
         throw new Error(`Failed to fetch Jira issue ${issueKey}: ${error.message}`);
       }
     }
-      return responses;
+      return JSON.stringify(responses);
   }
 }
 
