@@ -30,10 +30,14 @@ describe('JiraApiClient', () => {
   it('should handle API request error', async () => {
     const issueKey = 'ISSUE-123';
     const errorMessage = 'API request error';
+    const consoleLogSpy = jest.spyOn(console, 'log');
 
     const jira = new JiraApiClient(baseURL, username, password);
     jira.axiosInstance.get.mockRejectedValue(new Error(errorMessage));
 
-    await expect(jira.getIssues([issueKey])).rejects.toThrow(`Failed to fetch Jira issue ${issueKey}: ${errorMessage}`);
+    const issue = await jira.getIssues([issueKey]);
+
+    expect(consoleLogSpy).toHaveBeenCalledWith('Failed to fetch Jira issue ISSUE-123: API request error');
+    consoleLogSpy.mockRestore();
   });
 });
