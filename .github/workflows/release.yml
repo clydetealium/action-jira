@@ -55,15 +55,12 @@ jobs:
             echo "{\"version\": \"$VERSION\"}" > package.json
             VERSION_ARGUMENTS="$VERSION_ARGUMENTS --skip.commit"
             standard-version $VERSION_ARGUMENTS
-            git add CHANGELOG.md
-            git commit -m "chore(release): $VERSION"
           else
             jq ".version = \"$VERSION\"" package.json > package.tmp.json && mv package.tmp.json package.json
             standard-version $VERSION_ARGUMENTS
           fi
 
           cat package.json
-          git push --follow-tags origin ${{ github.ref }}
 
       - name: Create GitHub Release
         env:
